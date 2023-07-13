@@ -361,7 +361,7 @@ class SlaveMessageProcessor(LocaleMixin):
         if old_msg_id:
             return self.bot.edit_message_text(text=text, chat_id=old_msg_id[0], message_id=old_msg_id[1],
                                               prefix=msg_template, suffix=reactions, parse_mode='HTML',
-                                              reply_markup=reply_markup)
+                                              reply_markup=reply_markup, disable_web_page_preview=True)
         else:
             return self.bot.send_message(chat_id=tg_dest,
                                          text=text,
@@ -369,7 +369,8 @@ class SlaveMessageProcessor(LocaleMixin):
                                          parse_mode="HTML",
                                          reply_to_message_id=target_msg_id,
                                          reply_markup=reply_markup,
-                                         disable_notification=silent)
+                                         disable_notification=silent,
+                                         disable_web_page_preview=True)
 
     # Parameters to decide when to pictures as files
     IMG_MIN_SIZE = 1600
